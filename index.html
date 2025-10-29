@@ -1,92 +1,301 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
-    <meta charset="utf-8">
-    <meta name=viewport content="width=device-width, initial-scale=1">
-    <link rel="icon" href="logo.svg" type="image/svg+xml">
-    <!--[if lt IE 9]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
-    <style>
-        body { margin: 0; padding: 0; }
-        html { height: 100%; cursor: default; }
-        body {
-            font-family: "Roboto", sans-serif; /* Default font */
-            width: 100%; height: 100%;
-            text-align: center;
-            display: table;
-            opacity: 1;
-            animation: fadein 3s forwards;
-        }
-        h2 {
-            font-weight: 300;
-            margin-bottom: 25px;
-        }
-        img {
-            width: 25%; /* Image width */
-            border: 0; /* For IE */
-            /* Aspect ratio of image, gives initial dimension to prevent text moving down once image is loaded */
-            /* When changing logo, change this also */
-            aspect-ratio: 125 / 50;
-        }
-        #main {
-            vertical-align: middle;
-            display: table-cell;
-        }
-        /* Progress bar */
-        #progress {
-            width: 45%; /* Bar width */
-            margin: 0 auto;
-            border-radius: 10px; /* Roundness */
-            background-color: #a8a8a8; /* Background colour */
-            padding: 7px 5px;
-            /* border: 5px solid #a8a8a8; Border */
-        }
-        #fill {
-            padding: 2px 0;
-            background-color: #00b98b; /* Fill colour */
-            width: 35%; /* Bar percentage, change text below also */
-            border-radius: 25px; /* Roundness */
-            animation: proanimate 2s;
-        }
-        #barpercent h3 {
-            color: white; /* Bar percentage text colour */
-            margin: 0; padding: 0;
-            opacity: 1;
-            animation: fadein 3s forwards;
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Roti Waali - Fresh Homemade Rotis Delivered</title>
+  <link rel="icon" href="logo.png" type="image/png">
+  <link href="https://fonts.googleapis.com/css2?family=Hind:wght@300;400;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #FF6B35;
+      /* Saffron orange */
+      --secondary: #F7931E;
+      /* Warm terracotta */
+      --accent: #D4AF37;
+      /* Gold for highlights */
+      --text-dark: #2C1810;
+      /* Deep brown */
+      --text-light: #6B4E31;
+      /* Muted earth */
+      --bg-light: #FFF8F0;
+      /* Soft cream */
+      --white: #FFFFFF;
+    }
 
-        /* Fades in animation */
-        @keyframes fadein  {
-            from { opacity: 0; }
-        }
-        /* Animates bar on page load */
-        @keyframes proanimate {
-            from { width: 0%; }
-        }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-        @media screen and (max-width:600px) {
-            img {
-                width: 60%;
-            }
-            h1 {
-                font-size: 1.3em;
-            }
-            h2 {
-                margin: 1.1em;
-                font-size: 1.1em;
-            }
-            #progress {
-                width: 80%; /* Bar width */
-            }
-        }
-    </style>
-    <title>Coming Soon</title>
+    body {
+      font-family: 'Hind', sans-serif;
+      line-height: 1.6;
+      color: var(--text-dark);
+      background-color: var(--bg-light);
+    }
+
+    header {
+      background: var(--white);
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .logo-container {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      text-decoration: none;
+    }
+
+    .logo-img {
+      height: 40px;
+      width: auto;
+      object-fit: contain;
+      transition: transform 0.3s ease;
+    }
+
+    .logo {
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: var(--primary);
+    }
+
+    .logo-container:hover .logo-img {
+      transform: scale(1.1);
+    }
+
+    /* Responsive adjustment */
+    @media (max-width: 768px) {
+      .logo-img {
+        height: 32px;
+      }
+
+      .logo {
+        font-size: 1.5rem;
+      }
+    }
+
+    .contact {
+      font-size: 1.1rem;
+      color: var(--secondary);
+      font-weight: 400;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .contact a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .hero {
+      background: linear-gradient(135deg, #FF6B35 0%, #F7931E 50%, #D4AF37 100%);
+      background-size: cover;
+      background-position: center;
+      height: 70vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: var(--white);
+      position: relative;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.3);
+      /* Lighter overlay for vibrancy */
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      max-width: 800px;
+      padding: 0 2rem;
+    }
+
+    .hero h1 {
+      font-size: 3.5rem;
+      margin-bottom: 1rem;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    }
+
+    .hero p {
+      font-size: 1.3rem;
+      margin-bottom: 2rem;
+      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+    }
+
+    .cta-button {
+      background: var(--accent);
+      color: var(--text-dark);
+      padding: 1rem 2rem;
+      text-decoration: none;
+      border-radius: 5px;
+      font-weight: 700;
+      font-size: 1.1rem;
+      transition: background 0.3s ease;
+    }
+
+    .cta-button:hover {
+      background: var(--primary);
+      color: var(--white);
+    }
+
+    .about {
+      padding: 4rem 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .about h2 {
+      font-size: 2.5rem;
+      color: var(--primary);
+      margin-bottom: 2rem;
+    }
+
+    .about p {
+      font-size: 1.1rem;
+      max-width: 800px;
+      margin: 0 auto 2rem;
+      color: var(--text-light);
+    }
+
+    .features {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+      margin-top: 3rem;
+    }
+
+    .feature {
+      background: var(--white);
+      padding: 2rem;
+      border-radius: 10px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      text-align: center;
+    }
+
+    .feature h3 {
+      color: var(--secondary);
+      margin-bottom: 1rem;
+    }
+
+    .contact-section {
+      background: var(--secondary);
+      color: var(--white);
+      padding: 3rem 2rem;
+      text-align: center;
+    }
+
+    .contact-section h2 {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .contact-section p {
+      font-size: 1.2rem;
+      margin-bottom: 2rem;
+    }
+
+    footer {
+      background: var(--text-dark);
+      color: var(--white);
+      text-align: center;
+      padding: 2rem;
+    }
+
+    @media (max-width: 768px) {
+      .hero h1 {
+        font-size: 2.5rem;
+      }
+
+      .hero p {
+        font-size: 1rem;
+      }
+
+      header {
+        padding: 1rem;
+      }
+
+      .logo {
+        font-size: 1.5rem;
+      }
+    }
+  </style>
 </head>
+
 <body>
-    <div id="main">
-        <h1>Saturday Bazaar</h1>
-        <h2>Our website is currently under construction. </h2>
-        <div id="progress"><div id="fill"><div id="barpercent"><h3>35%</h3></div></div></div>
+  <header>
+    <a href="#" class="logo-container">
+      <img class="logo-img" src="logo.png" alt="Roti Waali Logo">
+      <span class="logo">Roti Waali</span>
+    </a>
+    <div class="contact">
+      <span>📞</span>
+      <a href="tel:+917021423002">+91-7021423002</a>
     </div>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400&display=swap" rel="stylesheet">
+  </header>
+
+  <section class="hero">
+    <div class="hero-content">
+      <h1>Fresh Homemade Rotis, Delivered with Love</h1>
+      <p>Authentic taste of home in every soft, wholesome bite.</p>
+      <a href="tel:+91XXXXXXXXXX" class="cta-button">Order Now – Call Us!</a>
+    </div>
+  </section>
+
+  <section class="about">
+    <h2>About Roti Waali</h2>
+    <p>At Roti Waali, we specialize in making fresh, homemade rotis using the finest wheat, jowar, and bajra. Each roti
+      is crafted with care from top-quality ingredients to deliver authentic taste and wholesome nutrition — just like
+      home. We ensure every roti is soft, healthy, and freshly delivered to your doorstep, making your daily meals
+      easier and healthier. Whether you need rotis for your family, office, or events, we guarantee freshness, hygiene,
+      and quality in every bite.</p>
+
+    <div class="features">
+      <div class="feature">
+        <h3>🌾 Finest Grains</h3>
+        <p>Premium wheat, jowar, and bajra sourced fresh for unbeatable flavor and nutrition.</p>
+      </div>
+      <div class="feature">
+        <h3>👩‍🍳 Handcrafted Daily</h3>
+        <p>Made with love in small batches, just like your grandmother's kitchen.</p>
+      </div>
+      <div class="feature">
+        <h3>🚚 Doorstep Fresh</h3>
+        <p>Hot, soft rotis delivered hygienically to keep your meals simple and healthy.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="contact-section">
+    <h2>Ready to Savor?</h2>
+    <p>Place your order today for the taste of authentic home-cooked rotis.</p>
+    <a href="tel:+917021423002" class="cta-button" style="background: var(--white); color: var(--secondary);">Call
+      +91-7021423002</a>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 Roti Waali. Bringing the warmth of home to your table. | <a href="tel:+917021423002"
+        style="color: var(--accent);">Contact Us</a></p>
+  </footer>
 </body>
+
 </html>
